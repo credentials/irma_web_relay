@@ -57,7 +57,7 @@
 			});
 		}
 		$(function() {
-			var channelBaseURL = "/cardproxy_web_relay/w";
+			var channelBaseURL = "/irma_web_relay/create";
 			$("#create").on(
 					"click",
 					function(event) {
@@ -65,7 +65,8 @@
 							console.log("Created output channel ", channel);
 							channelA = channel;
 							channelA.listen(function(data) {
-								$("#listA").prepend("<li><pre>" + data + "</pre></li>");
+								console.log("Got some data: <", data.length, ">");
+								//$("#listA").prepend("<li><pre>" + data + "</pre></li>");
 							});
 							Channel.setup(channelBaseURL, function(channel) {
 								console.log("Created input channel ", channel);

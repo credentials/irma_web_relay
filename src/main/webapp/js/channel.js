@@ -19,7 +19,7 @@ var Channel = function() {
 						if (data !== "") {
 							dataReceivedCallback(data);
 						}
-						setTimeout(that.waitForMessage, 200); // Wait for 200ms and request next message
+						//setTimeout(that.waitForMessage, 200); // Wait for 200ms and request next message
 					},
 					error : function(XMLHttpRequest, textStatus, errorThrown) {
 						console.log("onReceive error: ",textStatus, errorThrown);
@@ -55,6 +55,7 @@ var Channel = function() {
 					c.read_url = data.read_url;
 					c.write_url = data.write_url;
 					c.qr_url = data.qr_url;
+					console.log("Calling on success now, received", data, "with", c);
 					onSucces(c);
 				},
 				error : function(data) {

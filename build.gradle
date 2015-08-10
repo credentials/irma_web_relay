@@ -1,0 +1,41 @@
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+apply plugin: 'eclipse-wtp'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:+'
+    }
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven {
+        url "https://credentials.github.io/repos/maven2/"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.tomcat:tomcat-catalina:7.0.41'
+    compile 'org.apache.tomcat:tomcat-util:7.0.41'
+
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'com.google.code.gson:gson:2.2.2'
+    compile 'net.glxn:qrgen:1.4'
+    compile 'com.google.zxing:core:2.1.0'
+    compile 'com.google.zxing:javase:2.1.0'
+
+    compile 'ch.qos.logback:logback-classic:1.1.2'
+}
+
+gretty {
+    //contextConfigFile = file('src/test/resources/jetty-env.xml')
+    scanInterval = 10
+    servletContainer = 'tomcat7'
+    serverConfigFile = "src/test/conf/server.xml"
+}
